@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- ✏️ MODIFIQUE: Título da aba do navegador -->
-  <title>Júlia Sales— Portfólio Criativo</title>
+  <title>Júlia Sales — Portfólio Criativo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -35,7 +35,6 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -62,7 +61,6 @@
       z-index: 0;
     }
 
-    /* ── GLOW DE FUNDO ── */
     body::after {
       content: '';
       position: fixed;
@@ -76,23 +74,139 @@
       z-index: 0;
     }
 
+    /* ── CURSOR PERSONALIZADO ──
+       INTERAÇÃO 1: cursor customizado que brilha */
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+      box-shadow: 0 0 10px var(--cyan), 0 0 20px rgba(0,212,255,0.5);
+    }
+
+    .cursor-ring {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(0,212,255,0.5);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease, width 0.2s, height 0.2s, border-color 0.2s;
+    }
+
+    body.cursor-hover .cursor-ring {
+      width: 48px;
+      height: 48px;
+      border-color: var(--blue-bright);
+      box-shadow: 0 0 12px rgba(30,144,255,0.4);
+    }
+
+    /* ── NAVBAR FLUTUANTE ──
+       INTERAÇÃO 2: menu dropdown / navbar com highlight ativo */
+    .navbar {
+      position: sticky;
+      top: 12px;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 4px;
+      background: rgba(4,15,32,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border2);
+      border-radius: 50px;
+      padding: 6px 10px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(30,144,255,0.1);
+    }
+
+    .nav-btn {
+      font-family: var(--font-head);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text2);
+      padding: 8px 16px;
+      border-radius: 50px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .nav-btn:hover {
+      color: var(--blue-bright);
+      background: rgba(30,144,255,0.08);
+    }
+
+    .nav-btn.active {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-dim), var(--blue));
+      box-shadow: 0 0 12px rgba(30,144,255,0.4);
+    }
+
+    /* ── HAMBURGUER MOBILE ── */
+    .nav-hamburger {
+      display: none;
+      font-size: 22px;
+      color: var(--cyan);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 12px;
+    }
+
+    .nav-links { display: flex; gap: 4px; }
+
+    @media (max-width: 600px) {
+      .nav-hamburger { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: column;
+        background: rgba(4,15,32,0.97);
+        border: 1px solid var(--border2);
+        border-radius: 16px;
+        padding: 12px;
+        min-width: 180px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      }
+      .nav-links.open { display: flex; }
+    }
+
     .wrap {
       position: relative;
       z-index: 1;
       max-width: 980px;
       margin: 0 auto;
-      padding: 36px 24px 80px;
+      padding: 12px 24px 80px;
     }
 
     /* ════════════════════════════════════════
-       HEADER / HERO
+       HERO
     ════════════════════════════════════════ */
     .hero {
       display: grid;
       grid-template-columns: 200px 1fr;
       gap: 32px;
       align-items: center;
-      margin-bottom: 48px;
+      margin-bottom: 24px;
       padding: 36px;
       background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
       border: 1px solid var(--border2);
@@ -125,7 +239,6 @@
       pointer-events: none;
     }
 
-    /* ── FOTO DE PERFIL ── */
     .profile-frame {
       position: relative;
       width: 180px;
@@ -164,8 +277,6 @@
       border-radius: 6px;
       border: 2px solid var(--blue-dim);
       display: block;
-      background: var(--bg4);
-      /* Placeholder visual enquanto sem imagem */
     }
 
     .profile-placeholder {
@@ -184,13 +295,21 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* ── UPLOAD DE FOTO ── */
+    .profile-placeholder:hover {
+      border-color: var(--cyan);
+      box-shadow: var(--glow-strong);
     }
 
     .profile-placeholder .icon { font-size: 42px; opacity: 0.5; }
 
-    /* ── DADOS PESSOAIS ── */
     .hero-info { padding-top: 24px; }
 
+    /* ✏️ MODIFIQUE: nome exibido no topo */
     .hero-name {
       font-family: var(--font-head);
       font-size: 34px;
@@ -212,7 +331,6 @@
       margin-bottom: 20px;
     }
 
-    /* ── CURSOR PISCANDO ── */
     .cursor {
       display: inline-block;
       width: 2px;
@@ -225,7 +343,6 @@
 
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-    /* ── CONTATOS ── */
     .contacts { display: flex; flex-direction: column; gap: 8px; }
 
     .contact-item {
@@ -235,6 +352,7 @@
       font-size: 13px;
       color: var(--text2);
       transition: color 0.2s;
+      cursor: default;
     }
 
     .contact-item:hover { color: var(--blue-bright); }
@@ -321,6 +439,16 @@
       padding: 24px;
       margin-bottom: 20px;
       animation: fadeIn 0.6s ease both;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card-full:hover {
+      border-color: var(--blue-dim);
+    }
+
+    /* ── SEÇÕES COM ID PARA NAVEGAÇÃO ── */
+    section[id] {
+      scroll-margin-top: 80px;
     }
 
     /* ════════════════════════════════════════
@@ -333,6 +461,73 @@
     }
 
     .about-text strong { color: var(--blue-bright); }
+
+    /* ════════════════════════════════════════
+       SOFTWARE ICONS — INTERAÇÃO 3: Tooltip no hover
+    ════════════════════════════════════════ */
+    .software-icons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .sw-icon {
+      width: 52px;
+      height: 52px;
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      background: var(--bg4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      font-size: 20px;
+      cursor: default;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+      position: relative;
+    }
+
+    .sw-icon:hover {
+      border-color: var(--blue);
+      box-shadow: var(--glow);
+      transform: translateY(-4px);
+    }
+
+    /* Tooltip */
+    .sw-icon::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--bg4);
+      border: 1px solid var(--blue);
+      color: var(--blue-bright);
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 1px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: var(--glow);
+    }
+
+    .sw-icon:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .sw-label {
+      font-family: var(--font-head);
+      font-size: 7px;
+      letter-spacing: 1px;
+      color: var(--text2);
+    }
 
     /* ════════════════════════════════════════
        HABILIDADES
@@ -364,56 +559,21 @@
       background: var(--bg4);
       border-radius: 2px;
       overflow: hidden;
+      cursor: pointer;
     }
 
+    /* INTERAÇÃO 4: barra de skill anima ao entrar na viewport (IntersectionObserver) */
     .skill-fill {
       height: 100%;
       border-radius: 2px;
       background: linear-gradient(90deg, var(--blue-dim), var(--cyan));
       transform-origin: left;
-      animation: barGrow 1s ease both;
+      transform: scaleX(0);
+      transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    @keyframes barGrow {
-      from { transform: scaleX(0); }
-      to   { transform: scaleX(1); }
-    }
-
-    /* ── ÍCONES DE SOFTWARES ── */
-    .software-icons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .sw-icon {
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--border2);
-      border-radius: 8px;
-      background: var(--bg4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-      font-size: 20px;
-      cursor: default;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
-    }
-
-    .sw-icon:hover {
-      border-color: var(--blue);
-      box-shadow: var(--glow);
-      transform: translateY(-3px);
-    }
-
-    .sw-label {
-      font-family: var(--font-head);
-      font-size: 7px;
-      letter-spacing: 1px;
-      color: var(--text2);
+    .skill-fill.animated {
+      transform: scaleX(1);
     }
 
     /* ════════════════════════════════════════
@@ -445,6 +605,12 @@
       flex-shrink: 0;
       margin-top: 4px;
       box-shadow: 0 0 8px rgba(30,144,255,0.5);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .exp-item:hover .exp-dot {
+      background: var(--blue);
+      box-shadow: 0 0 16px rgba(30,144,255,0.8);
     }
 
     .exp-line {
@@ -480,7 +646,7 @@
     .exp-desc { font-size: 13px; color: var(--text2); }
 
     /* ════════════════════════════════════════
-       PROJETOS
+       PROJETOS — INTERAÇÃO 5: modal ao clicar no card
     ════════════════════════════════════════ */
     .projects-grid {
       display: grid;
@@ -517,7 +683,13 @@
       overflow: hidden;
     }
 
-    /* Gradiente de scan sobre thumb */
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .project-thumb::after {
       content: '';
       position: absolute;
@@ -545,7 +717,6 @@
       text-transform: uppercase;
     }
 
-    /* ── TAG CATEGORIAS ── */
     .cat-label {
       font-family: var(--font-head);
       font-size: 10px;
@@ -555,9 +726,7 @@
       margin: 20px 0 10px;
     }
 
-    /* ════════════════════════════════════════
-       LOGO / BRAND SECTION
-    ════════════════════════════════════════ */
+    /* ── BRAND GRID ── */
     .brand-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -594,7 +763,125 @@
     }
 
     /* ════════════════════════════════════════
-       ASSINATURA / FOOTER
+       MODAL DE PROJETO
+    ════════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2,11,24,0.92);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: var(--bg2);
+      border: 1px solid var(--blue-dim);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 540px;
+      box-shadow: 0 0 60px rgba(0,212,255,0.15);
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+      overflow: hidden;
+    }
+
+    .modal-overlay.open .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border2);
+    }
+
+    .modal-title {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue-bright);
+      letter-spacing: 2px;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      background: var(--bg4);
+      color: var(--text2);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .modal-close:hover {
+      border-color: var(--blue);
+      color: var(--blue-bright);
+    }
+
+    .modal-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--bg4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      border-bottom: 1px solid var(--border2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(4,15,32,0.7));
+    }
+
+    .modal-body { padding: 24px; }
+
+    .modal-tag {
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.8;
+    }
+
+    /* ════════════════════════════════════════
+       FOOTER
     ════════════════════════════════════════ */
     .footer-sig {
       margin-top: 40px;
@@ -639,12 +926,8 @@
       letter-spacing: 1px;
     }
 
-    /* ════════════════════════════════════════
-       CORNER DECORATIONS
-    ════════════════════════════════════════ */
-    .corner-deco {
-      position: relative;
-    }
+    /* ── CORNER DECO ── */
+    .corner-deco { position: relative; }
 
     .corner-deco::before,
     .corner-deco::after {
@@ -666,6 +949,31 @@
       border-width: 0 2px 2px 0;
     }
 
+    /* ── SCROLL TO TOP ── */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 40px;
+      height: 40px;
+      background: var(--blue-dim);
+      border: 1px solid var(--blue);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .scroll-top.visible { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { box-shadow: var(--glow-strong); transform: translateY(-3px); }
+
     /* ════════════════════════════════════════
        RESPONSIVO
     ════════════════════════════════════════ */
@@ -686,174 +994,170 @@
   </style>
 </head>
 <body>
+
+<!-- INTERAÇÃO 1: Cursor personalizado -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scrollTop" title="Voltar ao topo">↑</button>
+
+<!-- Modal de projeto -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">PROJETO</div>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="modal-thumb" id="modalThumb">🎨</div>
+    <div class="modal-body">
+      <div class="modal-tag" id="modalTag">Categoria</div>
+      <div class="modal-desc" id="modalDesc">Descrição do projeto.</div>
+    </div>
+  </div>
+</div>
+
 <div class="wrap">
 
-  <!-- ════════════════════════════════════════
-       HERO / CABEÇALHO
-  ════════════════════════════════════════ -->
-  <div class="hero corner-deco">
-    <!-- ── FOTO ── -->
-    <div class="profile-frame">
-      <!--
-        ✏️ MODIFIQUE: Troque o bloco abaixo por uma tag <img> com sua foto:
-        <img src="sua-foto.jpg" alt="Seu Nome" class="profile-img">
-      -->
-      <div class="profile-placeholder">
-        <span class="icon">👤</span>
-        SUA FOTO AQUI
+  <!-- INTERAÇÃO 2: Navbar flutuante com highlight de seção ativa -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <button class="nav-hamburger" id="hamburger">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a class="nav-btn active" href="#sobre">Sobre</a>
+        <a class="nav-btn" href="#skills">Skills</a>
+        <a class="nav-btn" href="#experiencia">Exp</a>
+        <a class="nav-btn" href="#projetos">Projetos</a>
       </div>
     </div>
+  </nav>
 
-    <!-- ── DADOS PESSOAIS ── -->
+  <!-- ═══ HERO ═══ -->
+  <div class="hero corner-deco" id="sobre">
+    <!-- ── FOTO ──
+         ✏️ MODIFIQUE: Substitua o bloco abaixo por:
+         <img src="imagemportifolio.jpeg" alt="Júlia Sales" class="profile-img">
+    -->
+     
+    <div class="profile-frame">
+     <img src="./assets/imagemportifolio.jpeg" alt="Júlia Sales" class="profile-img"> 
+        
+        
+      </div>
+      <input type="file" id="photoInput" accept="image/*" style="display:none">
+    </div>
+
     <div class="hero-info">
       <!-- ✏️ MODIFIQUE: Seu nome -->
-      <div class="hero-name">Seu Nome<span class="cursor"></span></div>
-      <!-- ✏️ MODIFIQUE: Sua área / cargo -->
-      <div class="hero-role">Creative Designer</div>
+      <div class="hero-name" id="heroName">Júlia Sales<span class="cursor"></span></div>
+      <!-- ✏️ MODIFIQUE: Seu cargo / área -->
+      <div class="hero-role" id="heroRole">Cientista da Computação</div>
 
       <div class="contacts">
-        <!-- ✏️ MODIFIQUE: Instagram -->
+        <!-- ✏️ MODIFIQUE: Seus contatos -->
         <div class="contact-item">
           <div class="contact-icon">📷</div>
-          @seu_instagram
+          <span>@seu_instagram</span>
         </div>
-        <!-- ✏️ MODIFIQUE: Facebook / LinkedIn -->
         <div class="contact-item">
           <div class="contact-icon">💼</div>
-          seu.linkedin
+          <span>seu.linkedin</span>
         </div>
-        <!-- ✏️ MODIFIQUE: WhatsApp / Telefone -->
         <div class="contact-item">
           <div class="contact-icon">📱</div>
-          +55 (00) 00000-0000
+          <span>+55 (12) 98817-3470</span>
         </div>
-        <!-- ✏️ MODIFIQUE: E-mail -->
         <div class="contact-item">
           <div class="contact-icon">✉️</div>
-          seuemail@exemplo.com
+          <span>julia.sales@sou.inteli.edu.br</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════
-       SOBRE MIM + HABILIDADES
-  ════════════════════════════════════════ -->
+  <!-- ═══ SOBRE + SOFTWARES ═══ -->
   <div class="grid-2">
-    <!-- ── SOBRE MIM ── -->
     <div class="card">
       <div class="section-label">Sobre mim</div>
-      <!-- ✏️ MODIFIQUE: Texto de apresentação pessoal -->
+      <!-- ✏️ MODIFIQUE: Texto de apresentação -->
       <p class="about-text">
-        Olá, me chamo <strong>Seu Nome</strong>, sou de <strong>Sua Cidade, Estado</strong>.
-        Trabalho como <strong>Designer Gráfico</strong> desde <strong>Mês/Ano</strong>,
+        Olá, me chamo <strong>Júlia Sales</strong>, sou de <strong>São Paulo, SP</strong>.
+        Atuo como <strong>Estudante de Ciência da Computação</strong> desde <strong>2026</strong>,
         com foco em design digital, identidade visual e UI/UX.
         Domino diversas ferramentas e estou sempre em busca de novos desafios
         criativos para transformar ideias em projetos visuais impactantes.
       </p>
     </div>
 
-    <!-- ── SOFTWARES ── -->
     <div class="card">
       <div class="section-label">Software Skill</div>
-      <!-- ✏️ MODIFIQUE: Adicione/remova ícones dos softwares que você usa -->
+      <!-- INTERAÇÃO 3: Tooltip ao passar o mouse nos ícones de software -->
+      <!-- ✏️ MODIFIQUE: data-tooltip = nome completo do software -->
       <div class="software-icons">
-        <div class="sw-icon"><span>🎨</span><span class="sw-label">Ps</span></div>
-        <div class="sw-icon"><span>🖌️</span><span class="sw-label">Ai</span></div>
-        <div class="sw-icon"><span>📐</span><span class="sw-label">Figma</span></div>
-        <div class="sw-icon"><span>🎬</span><span class="sw-label">Ae</span></div>
-        <!-- ✏️ Adicione mais ícones conforme necessário -->
+        <div class="sw-icon" data-tooltip="Photoshop"><span>🎨</span><span class="sw-label">Ps</span></div>
+        <div class="sw-icon" data-tooltip="Illustrator"><span>🖌️</span><span class="sw-label">Ai</span></div>
+        <div class="sw-icon" data-tooltip="Figma"><span>📐</span><span class="sw-label">Figma</span></div>
+        <div class="sw-icon" data-tooltip="After Effects"><span>🎬</span><span class="sw-label">Ae</span></div>
+        <!-- ✏️ Adicione mais ícones:
+        <div class="sw-icon" data-tooltip="VS Code"><span>💻</span><span class="sw-label">VSC</span></div>
+        -->
       </div>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════
-       HABILIDADES / BARRAS
-  ════════════════════════════════════════ -->
-  <div class="card-full">
+  <!-- ═══ HABILIDADES — INTERAÇÃO 4: Barras animam ao scroll ═══ -->
+  <div class="card-full" id="skills">
     <div class="section-label">Habilidades técnicas</div>
     <div class="skills-split">
       <div>
-        <!-- ✏️ MODIFIQUE: Nome da habilidade e porcentagem (style="width:XX%") -->
+        <!-- ✏️ MODIFIQUE: Nome e porcentagem -->
         <div class="skill-item">
-          <div class="skill-header">
-            <span>Photoshop</span>
-            <span class="skill-pct">90%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+          <div class="skill-header"><span>Blockchain</span><span class="skill-pct">60%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-header">
-            <span>Illustrator / Affinity</span>
-            <span class="skill-pct">80%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          <div class="skill-header"><span>JavaScript</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-header">
-            <span>Figma</span>
-            <span class="skill-pct">75%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          <div class="skill-header"><span>HTML/CSS</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
         </div>
       </div>
       <div>
-        <!-- ✏️ MODIFIQUE: Mais habilidades -->
         <div class="skill-item">
-          <div class="skill-header">
-            <span>After Effects</span>
-            <span class="skill-pct">65%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+          <div class="skill-header"><span>Photoshop</span><span class="skill-pct">65%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-header">
-            <span>Identidade Visual</span>
-            <span class="skill-pct">85%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          <div class="skill-header"><span>Python</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-header">
-            <span>UI / UX Design</span>
-            <span class="skill-pct">70%</span>
-          </div>
-          <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+          <div class="skill-header"><span>UI / UX Design</span><span class="skill-pct">70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════
-       EXPERIÊNCIA
-  ════════════════════════════════════════ -->
-  <div class="card-full">
+  <!-- ═══ EXPERIÊNCIA ═══ -->
+  <div class="card-full" id="experiencia">
     <div class="section-label">Experiência</div>
 
-    <!-- ✏️ MODIFIQUE: Duplique/remova blocos .exp-item conforme suas experiências -->
-
+    <!-- ✏️ MODIFIQUE: Duplique/remova blocos .exp-item -->
     <div class="exp-item">
-      <div class="exp-track">
-        <div class="exp-dot"></div>
-        <div class="exp-line"></div>
-      </div>
+      <div class="exp-track"><div class="exp-dot"></div><div class="exp-line"></div></div>
       <div class="exp-content">
-        <!-- ✏️ Cargo / Função -->
-        <div class="exp-title">Designer Gráfico Sênior</div>
-        <!-- ✏️ Empresa -->
-        <div class="exp-company">Nome da Empresa 1</div>
-        <!-- ✏️ Período -->
-        <div class="exp-date">Jan 2024 — Presente</div>
-        <!-- ✏️ Descrição breve (opcional) -->
-        <div class="exp-desc">Criação de identidades visuais, peças para redes sociais e materiais impressos.</div>
+        <div class="exp-title">CieloVerso</div>
+        <div class="exp-company">Inteli</div>
+        <div class="exp-date">Jan 2026 — mar 2026 </div>
+        <div class="exp-desc">Criação de jogo digital para treinamento corporativo.</div>
       </div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-track">
-        <div class="exp-dot"></div>
-        <div class="exp-line"></div>
-      </div>
+      <div class="exp-track"><div class="exp-dot"></div><div class="exp-line"></div></div>
       <div class="exp-content">
         <div class="exp-title">Designer Freelancer</div>
         <div class="exp-company">Nome da Empresa 2</div>
@@ -863,10 +1167,7 @@
     </div>
 
     <div class="exp-item">
-      <div class="exp-track">
-        <div class="exp-dot"></div>
-        <div class="exp-line"></div>
-      </div>
+      <div class="exp-track"><div class="exp-dot"></div><div class="exp-line"></div></div>
       <div class="exp-content">
         <div class="exp-title">Estágio em Design</div>
         <div class="exp-company">Nome da Empresa 3</div>
@@ -876,10 +1177,7 @@
     </div>
 
     <div class="exp-item">
-      <div class="exp-track">
-        <div class="exp-dot"></div>
-        <div class="exp-line"></div>
-      </div>
+      <div class="exp-track"><div class="exp-dot"></div><div class="exp-line"></div></div>
       <div class="exp-content">
         <div class="exp-title">Assistente de Marketing</div>
         <div class="exp-company">Nome da Empresa 4</div>
@@ -887,38 +1185,42 @@
         <div class="exp-desc">Criação de conteúdo visual para redes sociais e apoio em campanhas digitais.</div>
       </div>
     </div>
-
-    <!-- ✏️ Adicione mais experiências aqui se necessário -->
-
   </div>
 
-  <!-- ════════════════════════════════════════
-       PROJETOS — MANIPULAÇÃO / FUTURISMO
-  ════════════════════════════════════════ -->
-  <div class="card-full">
+  <!-- ═══ PROJETOS — INTERAÇÃO 5: Modal ao clicar ═══ -->
+  <div class="card-full" id="projetos">
     <div class="section-label">Meus Projetos</div>
 
-    <!-- ✏️ MODIFIQUE: Título da categoria de projetos -->
     <div class="cat-label">Manipulação &amp; Futurismo</div>
     <div class="projects-grid" style="margin-bottom:20px">
 
-      <!-- ✏️ MODIFIQUE: Projeto 1 — troque o emoji por uma <img> e edite nome/tag -->
-      <div class="project-card">
-        <div class="project-thumb">
-          <!--
-            ✏️ Para colocar imagem:
-            <img src="projeto1.jpg" style="width:100%;height:100%;object-fit:cover">
-          -->
-          🎨
-        </div>
+      <!--
+        ✏️ MODIFIQUE: Atributos do card:
+        data-name    = Nome do projeto
+        data-tag     = Categoria
+        data-desc    = Descrição detalhada (aparece no modal)
+        data-emoji   = Emoji fallback (quando não há imagem)
+
+        Para usar imagem na thumb, substitua o conteúdo de .project-thumb por:
+        <img src="projeto1.jpg" style="width:100%;height:100%;object-fit:cover">
+      -->
+      <div class="project-card"
+           data-name="Nome do Projeto 1"
+           data-tag="Manipulação Digital"
+           data-desc="Projeto de manipulação digital com composição de camadas e efeitos de luz futurista. Desenvolvido no Photoshop com texturas customizadas."
+           data-emoji="🎨">
+        <div class="project-thumb">🎨</div>
         <div class="project-info">
           <div class="project-name">Nome do Projeto 1</div>
           <div class="project-tag">Manipulação Digital</div>
         </div>
       </div>
 
-      <!-- ✏️ MODIFIQUE: Projeto 2 -->
-      <div class="project-card">
+      <div class="project-card"
+           data-name="Nome do Projeto 2"
+           data-tag="Composição"
+           data-desc="Composição artística explorando elementos cósmicos e futuristas, com foco em profundidade e perspectiva."
+           data-emoji="🌌">
         <div class="project-thumb">🌌</div>
         <div class="project-info">
           <div class="project-name">Nome do Projeto 2</div>
@@ -926,55 +1228,214 @@
         </div>
       </div>
 
-      <!-- ✏️ MODIFIQUE: Projeto 3 -->
-      <div class="project-card">
+      <div class="project-card"
+           data-name="Nome do Projeto 3"
+           data-tag="Futurismo"
+           data-desc="Identidade visual futurista com tipografia bold, paleta neon e elementos geométricos dinâmicos."
+           data-emoji="⚡">
         <div class="project-thumb">⚡</div>
         <div class="project-info">
           <div class="project-name">Nome do Projeto 3</div>
           <div class="project-tag">Futurismo</div>
         </div>
       </div>
-
     </div>
 
-    <!-- ✏️ MODIFIQUE: Segunda categoria de projetos (ex: Logos) -->
     <div class="cat-label">Projetos de Logo</div>
     <div class="brand-grid">
-
-      <!-- ✏️ MODIFIQUE: Logo 1 -->
-      <div class="brand-card">
-        <span>🔷</span>
-        <span class="brand-name">Cliente 1</span>
-      </div>
-
-      <!-- ✏️ MODIFIQUE: Logo 2 -->
-      <div class="brand-card">
-        <span>🔶</span>
-        <span class="brand-name">Cliente 2</span>
-      </div>
-
-      <!-- ✏️ MODIFIQUE: Logo 3 -->
-      <div class="brand-card">
-        <span>⬡</span>
-        <span class="brand-name">Cliente 3</span>
-      </div>
-
+      <div class="brand-card"><span>🔷</span><span class="brand-name">Cliente 1</span></div>
+      <div class="brand-card"><span>🔶</span><span class="brand-name">Cliente 2</span></div>
+      <div class="brand-card"><span>⬡</span><span class="brand-name">Cliente 3</span></div>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════
-       ASSINATURA / FOOTER
-  ════════════════════════════════════════ -->
+  <!-- ═══ FOOTER ═══ -->
   <div class="footer-sig">
-    <!-- ✏️ MODIFIQUE: Suas iniciais ou nome curto para assinatura -->
+    <!-- ✏️ MODIFIQUE: Iniciais ou nome curto -->
     <div class="sig-mark">
       <div class="sig-dot"></div>
-      SN · DESIGN
+      JS · DESIGN
     </div>
-    <!-- ✏️ MODIFIQUE: Sua área de atuação -->
-    <div class="sig-copy">Graphic Design &amp; Visual Identity — <!-- ✏️ Ano atual --> 2024</div>
+    <!-- ✏️ MODIFIQUE: Área de atuação e ano -->
+    <div class="sig-copy">Graphic Design &amp; Visual Identity — 2025</div>
   </div>
 
-</div>
+</div><!-- /wrap -->
+
+<script>
+/* ═══════════════════════════════════════════
+   INTERAÇÃO 1 — CURSOR PERSONALIZADO
+   O ponteiro é substituído por um dot ciano
+   + ring que expande ao passar em elementos interativos
+═══════════════════════════════════════════ */
+(function() {
+  const dot  = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx = window.innerWidth/2, my = window.innerHeight/2;
+  let rx = mx, ry = my;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left  = mx + 'px';
+    dot.style.top   = my + 'px';
+  });
+
+  // Ring segue com leve delay (lerp)
+  function animRing() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  // Expande ring sobre elementos interativos
+  const hoverEls = 'a,button,.project-card,.brand-card,.sw-icon,.contact-item,.nav-btn,.profile-placeholder';
+  document.querySelectorAll(hoverEls).forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  // Esconde cursor nativo
+  document.body.style.cursor = 'none';
+  document.querySelectorAll('a,button,input,label,[role="button"]').forEach(el => {
+    el.style.cursor = 'none';
+  });
+})();
+
+/* ═══════════════════════════════════════════
+   INTERAÇÃO 2 — NAVBAR COM HIGHLIGHT ATIVO
+   Ao scrollar, destaca automaticamente a seção visível
+═══════════════════════════════════════════ */
+(function() {
+  const sections = ['sobre','skills','experiencia','projetos'];
+  const btns = document.querySelectorAll('.nav-btn');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        btns.forEach(b => b.classList.remove('active'));
+        const active = document.querySelector(`.nav-btn[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  // Hamburguer mobile
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+})();
+
+/* ═══════════════════════════════════════════
+   INTERAÇÃO 3 — TOOLTIP NOS ÍCONES DE SOFTWARE
+   CSS puro com ::after (veja o CSS acima)
+   Já está implementado via CSS — nenhum JS necessário
+═══════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════
+   INTERAÇÃO 4 — BARRAS DE SKILL ANIMAM AO SCROLL
+   IntersectionObserver dispara a animação uma vez
+   quando a seção entra na viewport
+═══════════════════════════════════════════ */
+(function() {
+  const fills = document.querySelectorAll('.skill-fill');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target;
+        const w = fill.getAttribute('data-width');
+        fill.style.width = w + '%';
+        fill.classList.add('animated');
+        observer.unobserve(fill);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  fills.forEach(f => observer.observe(f));
+})();
+
+/* ═══════════════════════════════════════════
+   INTERAÇÃO 5 — MODAL DE PROJETO
+   Clique no card abre modal com detalhes
+═══════════════════════════════════════════ */
+(function() {
+  const overlay  = document.getElementById('modalOverlay');
+  const mTitle   = document.getElementById('modalTitle');
+  const mThumb   = document.getElementById('modalThumb');
+  const mTag     = document.getElementById('modalTag');
+  const mDesc    = document.getElementById('modalDesc');
+  const mClose   = document.getElementById('modalClose');
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      mTitle.textContent = card.dataset.name  || 'Projeto';
+      mTag.textContent   = card.dataset.tag   || '';
+      mDesc.textContent  = card.dataset.desc  || '';
+      mThumb.innerHTML   = card.dataset.emoji || '🎨';
+
+      // Se o card tem uma imagem, usa ela no modal também
+      const img = card.querySelector('.project-thumb img');
+      if (img) {
+        mThumb.innerHTML = `<img src="${img.src}" alt="${card.dataset.name}" style="width:100%;height:100%;object-fit:cover">`;
+      }
+
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  mClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+})();
+
+/* ═══════════════════════════════════════════
+   BÔNUS — SCROLL TO TOP
+═══════════════════════════════════════════ */
+(function() {
+  const btn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
+/* ═══════════════════════════════════════════
+   BÔNUS — UPLOAD DE FOTO (clique no placeholder)
+═══════════════════════════════════════════ */
+(function() {
+  const placeholder = document.getElementById('photoPlaceholder');
+  const input       = document.getElementById('photoInput');
+  if (!placeholder || !input) return;
+
+  placeholder.addEventListener('click', () => input.click());
+  input.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    const img = document.createElement('img');
+    img.src = url;
+    img.className = 'profile-img';
+    img.alt = 'Foto de perfil';
+    placeholder.parentElement.replaceChild(img, placeholder);
+  });
+})();
+</script>
 </body>
 </html>

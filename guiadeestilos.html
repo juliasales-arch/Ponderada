@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de Estilos — Portfólio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:          #020b18;
+      --bg2:         #040f20;
+      --bg3:         #071628;
+      --bg4:         #0a1e38;
+      --blue:        #1e90ff;
+      --blue-bright: #4db8ff;
+      --blue-dim:    #0d5fa3;
+      --blue-dark:   #03224a;
+      --cyan:        #00d4ff;
+      --cyan-dim:    #00a5c8;
+      --muted:       #1e3a5f;
+      --text:        #cce8ff;
+      --text2:       #5e8aad;
+      --border:      #0d2a45;
+      --border2:     #1a3d60;
+      --font-head:   'Orbitron', sans-serif;
+      --font-body:   'Rajdhani', sans-serif;
+      --radius:      10px;
+      --glow:        0 0 18px rgba(30,144,255,0.35);
+      --glow-strong: 0 0 32px rgba(0,212,255,0.5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 52px 52px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw; height: 60vh;
+      background: radial-gradient(ellipse at center, rgba(0,100,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── HERO DO GUIA ── */
+    .guide-hero {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 48px 32px;
+      background: linear-gradient(135deg, var(--bg2), var(--bg3));
+      border: 1px solid var(--border2);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guide-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle at top right, rgba(0,212,255,0.07), transparent 60%);
+      pointer-events: none;
+    }
+
+    .guide-badge {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid var(--cyan-dim);
+      padding: 4px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+
+    .guide-title {
+      font-family: var(--font-head);
+      font-size: 36px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1px;
+      text-shadow: 0 0 24px rgba(0,212,255,0.3);
+      margin-bottom: 8px;
+    }
+
+    .guide-sub {
+      font-size: 14px;
+      color: var(--text2);
+      letter-spacing: 1px;
+    }
+
+    /* ── SEÇÃO ── */
+    .section {
+      margin-bottom: 52px;
+    }
+
+    .section-head {
+      font-family: var(--font-head);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-head::before { content: ''; width: 20px; height: 2px; background: var(--blue); }
+    .section-head::after  { content: ''; flex: 1; height: 1px; background: var(--border2); }
+
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    /* ══════════════════════
+       1. PALETA DE CORES
+    ══════════════════════ */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 14px;
+    }
+
+    .color-swatch {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border2);
+    }
+
+    .swatch-block {
+      height: 72px;
+      position: relative;
+    }
+
+    .swatch-info {
+      background: var(--bg3);
+      padding: 10px 12px;
+    }
+
+    .swatch-name {
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--text2);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .swatch-hex {
+      font-family: var(--font-head);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 1px;
+    }
+
+    .swatch-role {
+      font-size: 11px;
+      color: var(--text2);
+      margin-top: 2px;
+    }
+
+    /* ══════════════════════
+       2. TIPOGRAFIA
+    ══════════════════════ */
+    .type-row {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .type-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .type-meta {
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--text2);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .type-specimen-head {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 38px;
+      color: #fff;
+      letter-spacing: -1px;
+      text-shadow: 0 0 20px rgba(0,212,255,0.3);
+      line-height: 1.1;
+    }
+
+    .type-specimen-body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--text2);
+      line-height: 1.6;
+      margin-top: 6px;
+    }
+
+    .type-weights {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .type-weight {
+      text-align: center;
+    }
+
+    .tw-sample {
+      font-family: var(--font-head);
+      font-size: 20px;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .tw-label {
+      font-size: 11px;
+      color: var(--text2);
+      margin-top: 4px;
+    }
+
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .scale-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .scale-label {
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--text2);
+      min-width: 64px;
+    }
+
+    /* ══════════════════════
+       3. ESPAÇAMENTO / GRID
+    ══════════════════════ */
+    .spacing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .spacing-bar {
+      background: linear-gradient(90deg, var(--blue-dim), var(--cyan));
+      height: 8px;
+      border-radius: 4px;
+      opacity: 0.8;
+    }
+
+    .spacing-label {
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--text2);
+      min-width: 50px;
+    }
+
+    .spacing-value {
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ══════════════════════
+       4. ÍCONES
+    ══════════════════════ */
+    .icons-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      width: 72px;
+    }
+
+    .icon-box {
+      width: 52px;
+      height: 52px;
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      background: var(--bg4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+
+    .icon-box:hover {
+      border-color: var(--blue);
+      box-shadow: var(--glow);
+      transform: translateY(-3px);
+    }
+
+    .icon-label {
+      font-family: var(--font-head);
+      font-size: 8px;
+      letter-spacing: 1px;
+      color: var(--text2);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════
+       5. COMPONENTES / BOTÕES
+    ══════════════════════ */
+    .comp-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .comp-label {
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--text2);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    /* Nav button */
+    .btn-nav {
+      font-family: var(--font-head);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text2);
+      padding: 8px 16px;
+      border-radius: 50px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .btn-nav:hover { color: var(--blue-bright); background: rgba(30,144,255,0.08); }
+
+    .btn-nav.active {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-dim), var(--blue));
+      box-shadow: 0 0 12px rgba(30,144,255,0.4);
+    }
+
+    .nav-demo {
+      display: flex;
+      gap: 4px;
+      background: rgba(4,15,32,0.85);
+      border: 1px solid var(--border2);
+      border-radius: 50px;
+      padding: 6px 10px;
+    }
+
+    /* Skill bar */
+    .skill-demo { width: 100%; max-width: 340px; }
+
+    .skill-header-d {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .skill-pct-d { color: var(--cyan); font-weight: 700; }
+
+    .skill-bar-d {
+      height: 4px;
+      background: var(--bg4);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .skill-fill-d {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--blue-dim), var(--cyan));
+    }
+
+    /* Contact item */
+    .contact-demo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text2);
+      padding: 6px 0;
+    }
+
+    .contact-icon-d {
+      width: 28px; height: 28px;
+      border: 1px solid var(--border2);
+      border-radius: 6px;
+      background: var(--bg4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    /* Project card mini */
+    .project-mini {
+      width: 160px;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-mini:hover {
+      border-color: var(--blue);
+      transform: translateY(-4px);
+      box-shadow: var(--glow-strong);
+    }
+
+    .proj-thumb-d {
+      width: 100%; aspect-ratio: 16/10;
+      background: var(--bg4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+
+    .proj-info-d { padding: 10px 12px; }
+
+    .proj-name-d {
+      font-size: 12px; font-weight: 700;
+      color: var(--text); margin-bottom: 3px;
+    }
+
+    .proj-tag-d {
+      font-family: var(--font-head);
+      font-size: 8px; letter-spacing: 2px;
+      color: var(--cyan); text-transform: uppercase;
+    }
+
+    /* Badge / tag */
+    .tag-demo {
+      font-family: var(--font-head);
+      font-size: 9px; letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid var(--cyan-dim);
+      padding: 4px 12px;
+      border-radius: 50px;
+      display: inline-block;
+    }
+
+    /* Section label */
+    .sec-lbl-d {
+      font-family: var(--font-head);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--blue);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sec-lbl-d::before { content: ''; width: 20px; height: 2px; background: var(--blue); }
+    .sec-lbl-d::after  { content: ''; flex: 1; height: 1px; background: var(--border2); }
+
+    /* Footer sig */
+    .sig-demo {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-head);
+      font-size: 14px; font-weight: 900;
+      color: var(--blue); letter-spacing: 3px;
+    }
+    .sig-dot-d {
+      width: 8px; height: 8px;
+      background: var(--cyan); border-radius: 50%;
+    }
+
+    /* ══════════════════════
+       6. ANIMAÇÕES
+    ══════════════════════ */
+    .anim-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+    }
+
+    .anim-card {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .anim-name {
+      font-family: var(--font-head);
+      font-size: 9px; letter-spacing: 2px;
+      color: var(--blue); margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .anim-demo-box {
+      height: 48px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* scan frame */
+    .frame-anim {
+      width: 40px; height: 50px;
+      border: 2px solid var(--cyan);
+      border-radius: 3px;
+      animation: scanFrame 3s ease-in-out infinite;
+    }
+
+    @keyframes scanFrame {
+      0%, 100% { opacity: 0.15; }
+      50%       { opacity: 0.9; }
+    }
+
+    /* blink cursor */
+    .cursor-anim {
+      display: inline-block;
+      width: 2px; height: 28px;
+      background: var(--cyan);
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* pulse dot */
+    .pulse-anim {
+      width: 14px; height: 14px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(0,212,255,0.5); }
+      50%       { opacity: 0.6; transform: scale(0.7); box-shadow: 0 0 0 8px rgba(0,212,255,0); }
+    }
+
+    /* bar grow */
+    .bar-anim-wrap {
+      width: 100px; height: 6px;
+      background: var(--bg4);
+      border-radius: 3px; overflow: hidden;
+    }
+    .bar-anim-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue-dim), var(--cyan));
+      border-radius: 3px;
+      animation: barGrow 2s cubic-bezier(0.16,1,0.3,1) infinite alternate;
+    }
+    @keyframes barGrow { from { width: 0; } to { width: 100%; } }
+
+    /* hover lift */
+    .lift-anim {
+      width: 40px; height: 40px;
+      background: var(--bg4);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .lift-anim:hover {
+      transform: translateY(-5px);
+      border-color: var(--blue);
+      box-shadow: var(--glow);
+    }
+
+    /* fade in */
+    .fade-anim {
+      font-family: var(--font-head);
+      font-size: 11px;
+      color: var(--blue-bright);
+      animation: fadeInG 2s ease-in-out infinite alternate;
+    }
+    @keyframes fadeInG {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════
+       7. INTERAÇÕES / SUMÁRIO
+    ══════════════════════ */
+    .interaction-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .interaction-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .interaction-item:hover { border-color: var(--blue-dim); }
+
+    .int-num {
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--blue);
+      min-width: 32px;
+      line-height: 1;
+    }
+
+    .int-name {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .int-desc {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    .int-tech {
+      font-family: var(--font-head);
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--cyan);
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════
+       RESPONSIVO
+    ══════════════════════ */
+    @media (max-width: 700px) {
+      .color-grid  { grid-template-columns: repeat(3, 1fr); }
+      .anim-grid   { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .color-grid  { grid-template-columns: repeat(2, 1fr); }
+      .anim-grid   { grid-template-columns: 1fr; }
+      .guide-title { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="guide-hero">
+    <div class="guide-badge">Style Guide</div>
+    <div class="guide-title">Guia de Estilos</div>
+    <div class="guide-sub">Portfólio Pessoal · Tema Futurista Azul · v1.0</div>
+  </div>
+
+  <!-- ══════════════════════
+       1. PALETA DE CORES
+  ══════════════════════ -->
+  <div class="section">
+    <div class="section-head">1 · Paleta de Cores</div>
+    <div class="card">
+      <div class="color-grid">
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#020b18"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Background</div>
+            <div class="swatch-hex">#020B18</div>
+            <div class="swatch-role">Fundo principal</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#040f20"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface</div>
+            <div class="swatch-hex">#040F20</div>
+            <div class="swatch-role">Cards / seções</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#071628"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface 2</div>
+            <div class="swatch-hex">#071628</div>
+            <div class="swatch-role">Cards secundários</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#0a1e38"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Surface 3</div>
+            <div class="swatch-hex">#0A1E38</div>
+            <div class="swatch-role">Ícones / inputs</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#1e90ff"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Blue</div>
+            <div class="swatch-hex">#1E90FF</div>
+            <div class="swatch-role">Primária / CTAs</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#4db8ff"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Blue Bright</div>
+            <div class="swatch-hex">#4DB8FF</div>
+            <div class="swatch-role">Hover / destaque</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#0d5fa3"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Blue Dim</div>
+            <div class="swatch-hex">#0D5FA3</div>
+            <div class="swatch-role">Gradiente início</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#03224a"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Blue Dark</div>
+            <div class="swatch-hex">#03224A</div>
+            <div class="swatch-role">Placeholder bg</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#00d4ff"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Cyan</div>
+            <div class="swatch-hex">#00D4FF</div>
+            <div class="swatch-role">Acento / glow</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#00a5c8"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Cyan Dim</div>
+            <div class="swatch-hex">#00A5C8</div>
+            <div class="swatch-role">Acento suave</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#cce8ff"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Text</div>
+            <div class="swatch-hex">#CCE8FF</div>
+            <div class="swatch-role">Texto principal</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#5e8aad"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Text Muted</div>
+            <div class="swatch-hex">#5E8AAD</div>
+            <div class="swatch-role">Texto secundário</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#0d2a45"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Border</div>
+            <div class="swatch-hex">#0D2A45</div>
+            <div class="swatch-role">Grid de fundo</div>
+          </div>
+        </div>
+
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#1a3d60"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Border 2</div>
+            <div class="swatch-hex">#1A3D60</div>
+            <div class="swatch-role">Bordas de cards</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       2. TIPOGRAFIA
+  ══════════════════════ -->
+  <div class="section">
+    <div class="section-head">2 · Tipografia</div>
+    <div class="card">
+
+      <!-- Orbitron -->
+      <div class="type-row">
+        <div class="type-meta">Fonte de Headings — Orbitron (Google Fonts)</div>
+        <div class="type-specimen-head">Portfólio Criativo</div>
+        <div style="margin-top:16px">
+          <div class="type-weights">
+            <div class="type-weight">
+              <div class="tw-sample" style="font-weight:400">Aa</div>
+              <div class="tw-label">400 Regular</div>
+            </div>
+            <div class="type-weight">
+              <div class="tw-sample" style="font-weight:600">Aa</div>
+              <div class="tw-label">600 SemiBold</div>
+            </div>
+            <div class="type-weight">
+              <div class="tw-sample" style="font-weight:700">Aa</div>
+              <div class="tw-label">700 Bold</div>
+            </div>
+            <div class="type-weight">
+              <div class="tw-sample" style="font-weight:900">Aa</div>
+              <div class="tw-label">900 Black</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:16px; font-family:var(--font-head); font-size:12px; color:var(--text2); letter-spacing:2px;">
+          ABCDEFGHIJKLMNOPQRSTUVWXYZ · 0123456789
+        </div>
+        <div style="margin-top:6px; font-size:12px; color:var(--text2);">
+          Uso: títulos, labels de seção, badges, navbar, footer, metadados
+        </div>
+      </div>
+
+      <!-- Rajdhani -->
+      <div class="type-row">
+        <div class="type-meta">Fonte de Corpo — Rajdhani (Google Fonts)</div>
+        <div class="type-specimen-body">
+          Design digital com foco em identidade visual e experiência do usuário.
+        </div>
+        <div style="margin-top:16px">
+          <div class="type-weights">
+            <div class="type-weight">
+              <div class="tw-sample" style="font-family:var(--font-body);font-weight:300">Aa</div>
+              <div class="tw-label">300 Light</div>
+            </div>
+            <div class="type-weight">
+              <div class="tw-sample" style="font-family:var(--font-body);font-weight:400">Aa</div>
+              <div class="tw-label">400 Regular</div>
+            </div>
+            <div class="type-weight">
+              <div class="tw-sample" style="font-family:var(--font-body);font-weight:500">Aa</div>
+              <div class="tw-label">500 Medium</div>
+            </div>
+            <div class="type-weight">
+              <div class="tw-sample" style="font-family:var(--font-body);font-weight:600">Aa</div>
+              <div class="tw-label">600 SemiBold</div>
+            </div>
+            <div class="type-weight">
+              <div class="tw-sample" style="font-family:var(--font-body);font-weight:700">Aa</div>
+              <div class="tw-label">700 Bold</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:12px; font-size:12px; color:var(--text2);">
+          Uso: parágrafos, descrições, listas, textos de cards
+        </div>
+      </div>
+
+      <!-- Escala tipográfica -->
+      <div class="type-row">
+        <div class="type-meta">Escala Tipográfica</div>
+        <div class="type-scale">
+          <div class="scale-row">
+            <div class="scale-label">Hero · 34px</div>
+            <div style="font-family:var(--font-head);font-size:34px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;">Júlia Sales</div>
+          </div>
+          <div class="scale-row">
+            <div class="scale-label">H2 · 18px</div>
+            <div style="font-family:var(--font-body);font-size:18px;font-weight:700;color:var(--text);">Habilidades técnicas</div>
+          </div>
+          <div class="scale-row">
+            <div class="scale-label">Label · 10px</div>
+            <div style="font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:4px;color:var(--blue);text-transform:uppercase;">SEÇÃO LABEL</div>
+          </div>
+          <div class="scale-row">
+            <div class="scale-label">Body · 14px</div>
+            <div style="font-size:14px;color:var(--text2);">Texto de apresentação e descrições de projetos.</div>
+          </div>
+          <div class="scale-row">
+            <div class="scale-label">Small · 11px</div>
+            <div style="font-size:11px;color:var(--text2);">Metadados, datas, copyright</div>
+          </div>
+          <div class="scale-row">
+            <div class="scale-label">Micro · 9px</div>
+            <div style="font-family:var(--font-head);font-size:9px;letter-spacing:3px;color:var(--cyan);text-transform:uppercase;">CATEGORIA · TAG</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       3. ESPAÇAMENTO
+  ══════════════════════ -->
+  <div class="section">
+    <div class="section-head">3 · Espaçamento &amp; Grid</div>
+    <div class="card">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+
+        <div>
+          <div class="comp-label">Escala de Espaçamento</div>
+          <div class="spacing-grid">
+            <div class="spacing-row">
+              <div class="spacing-label">4px</div>
+              <div class="spacing-bar" style="width:4px"></div>
+              <div class="spacing-value">Gap mínimo</div>
+            </div>
+            <div class="spacing-row">
+              <div class="spacing-label">8px</div>
+              <div class="spacing-bar" style="width:8px"></div>
+              <div class="spacing-value">Gap ícones</div>
+            </div>
+            <div class="spacing-row">
+              <div class="spacing-label">12px</div>
+              <div class="spacing-bar" style="width:12px"></div>
+              <div class="spacing-value">Gap grid brand</div>
+            </div>
+            <div class="spacing-row">
+              <div class="spacing-label">16px</div>
+              <div class="spacing-bar" style="width:16px"></div>
+              <div class="spacing-value">Gap projetos</div>
+            </div>
+            <div class="spacing-row">
+              <div class="spacing-label">20px</div>
+              <div class="spacing-bar" style="width:20px"></div>
+              <div class="spacing-value">Gap grid 2</div>
+            </div>
+            <div class="spacing-row">
+              <div class="spacing-label">24px</div>
+              <div class="spacing-bar" style="width:24px"></div>
+              <div class="spacing-value">Padding card</div>
+            </div>
+            <div class="spacing-row">
+              <div class="spacing-label">32px</div>
+              <div class="spacing-bar" style="width:32px"></div>
+              <div class="spacing-value">Gap hero</div>
+            </div>
+            <div class="spacing-row">
+              <div class="spacing-label">36px</div>
+              <div class="spacing-bar" style="width:36px"></div>
+              <div class="spacing-value">Padding hero</div>
+            </div>
+            <div class="spacing-row">
+              <div class="spacing-label">48px</div>
+              <div class="spacing-bar" style="width:48px"></div>
+              <div class="spacing-value">Margem seção</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="comp-label">Border Radius</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:40px;height:40px;background:var(--bg4);border:1px solid var(--border2);border-radius:4px;"></div>
+              <div style="font-size:12px;color:var(--text2);">4px — ícones internos</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:40px;height:40px;background:var(--bg4);border:1px solid var(--border2);border-radius:6px;"></div>
+              <div style="font-size:12px;color:var(--text2);">6px — foto, contact icon</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:40px;height:40px;background:var(--bg4);border:1px solid var(--border2);border-radius:8px;"></div>
+              <div style="font-size:12px;color:var(--text2);">8px — brand cards, sw-icon</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:40px;height:40px;background:var(--bg4);border:1px solid var(--border2);border-radius:10px;"></div>
+              <div style="font-size:12px;color:var(--text2);">10px (--radius) — cards</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:40px;height:40px;background:var(--bg4);border:1px solid var(--border2);border-radius:16px;"></div>
+              <div style="font-size:12px;color:var(--text2);">16px — hero, modal</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:80px;height:32px;background:var(--bg4);border:1px solid var(--border2);border-radius:50px;"></div>
+              <div style="font-size:12px;color:var(--text2);">50px — navbar pills</div>
+            </div>
+          </div>
+          <div style="margin-top:24px;">
+            <div class="comp-label">Grid principal</div>
+            <div style="font-size:13px;color:var(--text2);line-height:1.8;">
+              Max-width: <strong style="color:var(--text)">980px</strong><br>
+              Padding horizontal: <strong style="color:var(--text)">24px</strong><br>
+              Grid 2 colunas: <strong style="color:var(--text)">1fr 1fr · gap 20px</strong><br>
+              Grid projetos: <strong style="color:var(--text)">3 colunas · gap 16px</strong><br>
+              Mobile breakpoint: <strong style="color:var(--text)">700px / 480px</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       4. ÍCONES
+  ══════════════════════ -->
+  <div class="section">
+    <div class="section-head">4 · Ícones</div>
+    <div class="card">
+      <div class="comp-label" style="margin-bottom:16px;">Ícones de Software (sw-icon) — 52×52px · border-radius 8px</div>
+      <div class="icons-grid">
+        <div class="icon-item">
+          <div class="icon-box"><span>🎨</span></div>
+          <div class="icon-label">Ps</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box"><span>🖌️</span></div>
+          <div class="icon-label">Ai</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box"><span>📐</span></div>
+          <div class="icon-label">Figma</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box"><span>🎬</span></div>
+          <div class="icon-label">Ae</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box"><span>💻</span></div>
+          <div class="icon-label">Code</div>
+        </div>
+        <div class="icon-item">
+          <div class="icon-box"><span>📱</span></div>
+          <div class="icon-label">Mobile</div>
+        </div>
+      </div>
+
+      <div class="comp-label" style="margin-top:24px;margin-bottom:16px;">Ícones de Contato (contact-icon) — 28×28px · border-radius 6px</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <div style="width:28px;height:28px;border:1px solid var(--border2);border-radius:6px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:14px;">📷</div>
+        <div style="width:28px;height:28px;border:1px solid var(--border2);border-radius:6px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:14px;">💼</div>
+        <div style="width:28px;height:28px;border:1px solid var(--border2);border-radius:6px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:14px;">📱</div>
+        <div style="width:28px;height:28px;border:1px solid var(--border2);border-radius:6px;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:14px;">✉️</div>
+      </div>
+
+      <div class="comp-label" style="margin-top:24px;margin-bottom:16px;">Ícones de Projeto / Brand — 28px · emoji + label</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <div style="width:52px;height:52px;border:1px solid var(--border2);border-radius:8px;background:var(--bg4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:22px;">🔷<span style="font-family:var(--font-head);font-size:8px;color:var(--text2);">LOGO</span></div>
+        <div style="width:52px;height:52px;border:1px solid var(--border2);border-radius:8px;background:var(--bg4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:22px;">🔶<span style="font-family:var(--font-head);font-size:8px;color:var(--text2);">BRAND</span></div>
+        <div style="width:52px;height:52px;border:1px solid var(--border2);border-radius:8px;background:var(--bg4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:22px;">⬡<span style="font-family:var(--font-head);font-size:8px;color:var(--text2);">ID</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       5. COMPONENTES
+  ══════════════════════ -->
+  <div class="section">
+    <div class="section-head">5 · Componentes</div>
+    <div class="card">
+
+      <!-- Navbar -->
+      <div class="comp-label">Navbar Flutuante (sticky · backdrop-filter blur)</div>
+      <div class="comp-row">
+        <div class="nav-demo">
+          <button class="btn-nav active">Sobre</button>
+          <button class="btn-nav">Skills</button>
+          <button class="btn-nav">Exp</button>
+          <button class="btn-nav">Projetos</button>
+        </div>
+      </div>
+
+      <!-- Section label -->
+      <div class="comp-label">Section Label</div>
+      <div class="comp-row">
+        <div style="width:100%;">
+          <div class="sec-lbl-d">Habilidades técnicas</div>
+        </div>
+      </div>
+
+      <!-- Badge -->
+      <div class="comp-label">Badge / Tag</div>
+      <div class="comp-row">
+        <span class="tag-demo">Style Guide</span>
+        <span class="tag-demo" style="color:var(--blue);border-color:var(--blue-dim);">Portfolio</span>
+      </div>
+
+      <!-- Skill bar -->
+      <div class="comp-label">Barra de Habilidade (animada ao scroll)</div>
+      <div class="comp-row" style="flex-direction:column;gap:10px;">
+        <div class="skill-demo">
+          <div class="skill-header-d"><span>Photoshop</span><span class="skill-pct-d">90%</span></div>
+          <div class="skill-bar-d"><div class="skill-fill-d" style="width:90%"></div></div>
+        </div>
+        <div class="skill-demo">
+          <div class="skill-header-d"><span>Figma</span><span class="skill-pct-d">75%</span></div>
+          <div class="skill-bar-d"><div class="skill-fill-d" style="width:75%"></div></div>
+        </div>
+      </div>
+
+      <!-- Contact item -->
+      <div class="comp-label">Item de Contato (hover glow)</div>
+      <div class="comp-row" style="flex-direction:column;gap:4px;">
+        <div class="contact-demo">
+          <div class="contact-icon-d">📷</div>@seu_instagram
+        </div>
+        <div class="contact-demo">
+          <div class="contact-icon-d">✉️</div>seuemail@exemplo.com
+        </div>
+      </div>
+
+      <!-- Project card -->
+      <div class="comp-label">Project Card (hover lift + modal ao clicar)</div>
+      <div class="comp-row">
+        <div class="project-mini">
+          <div class="proj-thumb-d">🎨</div>
+          <div class="proj-info-d">
+            <div class="proj-name-d">Projeto Exemplo</div>
+            <div class="proj-tag-d">Manipulação Digital</div>
+          </div>
+        </div>
+        <div class="project-mini">
+          <div class="proj-thumb-d">🌌</div>
+          <div class="proj-info-d">
+            <div class="proj-name-d">Composição Cósmica</div>
+            <div class="proj-tag-d">Composição</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer sig -->
+      <div class="comp-label">Assinatura (Footer)</div>
+      <div class="comp-row">
+        <div style="padding:20px 28px;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:12px;">
+          <div class="sig-demo"><div class="sig-dot-d"></div>JS · DESIGN</div>
+          <div style="font-size:11px;color:var(--text2);letter-spacing:1px;">Graphic Design &amp; Visual Identity — 2025</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       6. EFEITOS VISUAIS
+  ══════════════════════ -->
+  <div class="section">
+    <div class="section-head">6 · Efeitos Visuais &amp; Animações</div>
+    <div class="card">
+      <div class="anim-grid">
+
+        <div class="anim-card">
+          <div class="anim-name">Scan Frame</div>
+          <div class="anim-demo-box"><div class="frame-anim"></div></div>
+          <div style="font-size:11px;color:var(--text2);margin-top:10px;">Borda da foto de perfil</div>
+        </div>
+
+        <div class="anim-card">
+          <div class="anim-name">Cursor Blink</div>
+          <div class="anim-demo-box"><div class="cursor-anim"></div></div>
+          <div style="font-size:11px;color:var(--text2);margin-top:10px;">Cursor após o nome</div>
+        </div>
+
+        <div class="anim-card">
+          <div class="anim-name">Pulse Dot</div>
+          <div class="anim-demo-box"><div class="pulse-anim"></div></div>
+          <div style="font-size:11px;color:var(--text2);margin-top:10px;">Dot de status (footer)</div>
+        </div>
+
+        <div class="anim-card">
+          <div class="anim-name">Bar Grow</div>
+          <div class="anim-demo-box"><div class="bar-anim-wrap"><div class="bar-anim-fill"></div></div></div>
+          <div style="font-size:11px;color:var(--text2);margin-top:10px;">Skill bars ao entrar no viewport</div>
+        </div>
+
+        <div class="anim-card">
+          <div class="anim-name">Hover Lift</div>
+          <div class="anim-demo-box"><div class="lift-anim">🎨</div></div>
+          <div style="font-size:11px;color:var(--text2);margin-top:10px;">Cards, sw-icons, brand cards</div>
+        </div>
+
+        <div class="anim-card">
+          <div class="anim-name">Fade In Up</div>
+          <div class="anim-demo-box"><div class="fade-anim">PORTFOLIO</div></div>
+          <div style="font-size:11px;color:var(--text2);margin-top:10px;">Entrada de seções e cards</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div>
+          <div class="comp-label">Glow Box Shadows</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+            <div style="padding:12px;border-radius:8px;border:1px solid var(--blue-dim);background:var(--bg4);box-shadow:0 0 18px rgba(30,144,255,0.35);font-size:12px;color:var(--text2);">--glow · 18px blue · 0.35</div>
+            <div style="padding:12px;border-radius:8px;border:1px solid var(--cyan);background:var(--bg4);box-shadow:0 0 32px rgba(0,212,255,0.5);font-size:12px;color:var(--text2);">--glow-strong · 32px cyan · 0.5</div>
+          </div>
+        </div>
+        <div>
+          <div class="comp-label">Background Grid</div>
+          <div style="height:100px;border-radius:8px;border:1px solid var(--border2);background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:26px 26px;opacity:0.8;"></div>
+          <div style="font-size:11px;color:var(--text2);margin-top:6px;">52×52px · opacity 0.35 · fixed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       7. INTERAÇÕES
+  ══════════════════════ -->
+  <div class="section">
+    <div class="section-head">7 · Mapa de Interações</div>
+    <div class="card">
+      <div class="interaction-list">
+
+        <div class="interaction-item">
+          <div class="int-num">01</div>
+          <div>
+            <div class="int-name">Cursor Personalizado</div>
+            <div class="int-desc">O cursor padrão do navegador é substituído por um ponto ciano com glow e um anel que segue com leve delay (lerp). Ao passar sobre elementos interativos (cards, botões, ícones), o anel expande de 32px para 48px com transição suave.</div>
+            <div class="int-tech">JavaScript · requestAnimationFrame · CSS transition</div>
+          </div>
+        </div>
+
+        <div class="interaction-item">
+          <div class="int-num">02</div>
+          <div>
+            <div class="int-name">Navbar Flutuante com Highlight Ativo</div>
+            <div class="int-desc">Barra de navegação sticky com visual pill e backdrop blur. Ao scrollar, o IntersectionObserver detecta qual seção está visível e automaticamente destaca o botão correspondente na navbar com estilo "active" (fundo gradiente azul + glow). No mobile, vira um menu dropdown hamburguer.</div>
+            <div class="int-tech">JavaScript · IntersectionObserver · CSS sticky · backdrop-filter</div>
+          </div>
+        </div>
+
+        <div class="interaction-item">
+          <div class="int-num">03</div>
+          <div>
+            <div class="int-name">Tooltip nos Ícones de Software</div>
+            <div class="int-desc">Ao passar o mouse sobre os ícones de software (Ps, Ai, Figma, Ae...), aparece uma tooltip acima do ícone com o nome completo do software, com animação de fade + slide. Implementado 100% em CSS puro usando o atributo data-tooltip e pseudo-elemento ::after.</div>
+            <div class="int-tech">CSS puro · ::after · attr() · opacity transition</div>
+          </div>
+        </div>
+
+        <div class="interaction-item">
+          <div class="int-num">04</div>
+          <div>
+            <div class="int-name">Barras de Skill com Animação ao Scroll</div>
+            <div class="int-desc">As barras de habilidade começam em scaleX(0) e só animam quando entram na viewport do usuário, usando IntersectionObserver. Isso cria um efeito de "revelação progressiva" que valoriza a leitura e evita animações desperdiçadas fora da tela.</div>
+            <div class="int-tech">JavaScript · IntersectionObserver · CSS transform scaleX · cubic-bezier</div>
+          </div>
+        </div>
+
+        <div class="interaction-item">
+          <div class="int-num">05</div>
+          <div>
+            <div class="int-name">Modal de Detalhes do Projeto</div>
+            <div class="int-desc">Clicar em qualquer project card abre um modal centralizado com overlay escuro e blur. O modal exibe nome, categoria, thumbnail e descrição completa do projeto. Fecha ao clicar fora, no botão ✕ ou pressionando Escape. Suporta imagens reais via tag img.</div>
+            <div class="int-tech">JavaScript · CSS transform + opacity · keyboard event · scroll lock</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       FOOTER
+  ══════════════════════ -->
+  <div style="margin-top:40px;padding:20px 28px;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div class="sig-demo"><div class="sig-dot-d"></div>GUIA DE ESTILOS</div>
+    <div style="font-size:11px;color:var(--text2);letter-spacing:1px;">Portfólio Pessoal · Tema Futurista Azul · 2025</div>
+  </div>
+
+</div>
+</body>
+</html>
