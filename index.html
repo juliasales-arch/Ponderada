@@ -315,7 +315,7 @@
       font-size: 34px;
       font-weight: 900;
       color: #fff;
-      letter-spacing: -1px;
+      letter-spacing: 0;
       line-height: 1.1;
       margin-bottom: 4px;
       text-shadow: 0 0 20px rgba(0,212,255,0.4);
@@ -991,6 +991,663 @@
       .brand-grid    { grid-template-columns: 1fr 1fr; }
       .hero-name     { font-size: 26px; }
     }
+
+    /* Poster portfolio visual inspired by the provided reference */
+    :root {
+      --bg: #141414;
+      --bg2: rgba(22, 22, 22, 0.92);
+      --bg3: rgba(37, 37, 37, 0.86);
+      --bg4: rgba(255, 255, 255, 0.08);
+      --blue: #ffffff;
+      --blue-bright: #ffffff;
+      --blue-dim: #bfbfbf;
+      --blue-dark: #222222;
+      --cyan: #ffffff;
+      --cyan-dim: #cfcfcf;
+      --accent: #ffffff;
+      --muted: #6d6d6d;
+      --text: #f4f4f4;
+      --text2: #d6d6d6;
+      --border: rgba(255, 255, 255, 0.18);
+      --border2: rgba(255, 255, 255, 0.82);
+      --radius: 0;
+      --glow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      --glow-strong: 0 18px 44px rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      color: var(--text);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.055) 0 1px, transparent 1px 15px),
+        radial-gradient(circle at 16% 18%, rgba(255,255,255,0.08), transparent 24%),
+        linear-gradient(180deg, #222 0%, #151515 46%, #2b2b2b 46%, #2b2b2b 64%, #151515 64%, #111 100%);
+      font-family: var(--font-body);
+      letter-spacing: 0;
+    }
+
+    body::before {
+      background:
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 12px),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 20px);
+      background-size: auto;
+      opacity: 0.55;
+    }
+
+    body::after {
+      top: 0;
+      left: 0;
+      transform: none;
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(90deg, transparent 0 58%, rgba(255,255,255,0.08) 58% 58.35%, transparent 58.35%),
+        linear-gradient(180deg, transparent 0 55%, rgba(255,255,255,0.72) 55% 55.28%, transparent 55.28%);
+      opacity: 0.9;
+    }
+
+    .cursor-dot,
+    .cursor-ring {
+      display: none;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      padding: 58px 34px 72px;
+    }
+
+    .navbar {
+      position: relative;
+      top: auto;
+      justify-content: space-between;
+      margin-bottom: 62px;
+    }
+
+    .nav-inner {
+      width: 100%;
+      justify-content: space-between;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .nav-hamburger {
+      display: flex;
+      width: 92px;
+      height: 62px;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      border: 0;
+      position: relative;
+    }
+
+    .nav-hamburger::before {
+      content: "";
+      width: 76px;
+      height: 44px;
+      background:
+        linear-gradient(#fff, #fff) 0 0 / 76px 6px no-repeat,
+        linear-gradient(#fff, #fff) 0 19px / 76px 6px no-repeat,
+        linear-gradient(#fff, #fff) 0 38px / 76px 6px no-repeat;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-left: auto;
+      border: 2px solid #fff;
+      padding: 12px 18px;
+      min-height: 62px;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-links::before {
+      content: "PORTFOLIO";
+      font-family: var(--font-head);
+      font-size: 30px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 5px;
+      margin-right: 12px;
+    }
+
+    .nav-btn {
+      color: #fff;
+      border-left: 1px solid rgba(255,255,255,0.45);
+      border-radius: 0;
+      padding: 3px 0 3px 12px;
+      font-size: 10px;
+      background: transparent;
+      letter-spacing: 2px;
+    }
+
+    .nav-btn.active,
+    .nav-btn:hover {
+      color: #fff;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 44px;
+      align-items: center;
+      padding: 0 0 36px;
+      margin-bottom: 28px;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      overflow: visible;
+    }
+
+    .hero::before,
+    .hero::after,
+    .corner-deco::before,
+    .corner-deco::after {
+      display: none;
+    }
+
+    .profile-frame {
+      width: 300px;
+      height: 300px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.38);
+    }
+
+    .profile-frame::before,
+    .profile-frame::after {
+      display: none;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 0;
+      border-radius: 50%;
+      filter: grayscale(28%) contrast(1.08);
+    }
+
+    .profile-frame::after {
+      content: "JS";
+      display: flex;
+      position: absolute;
+      right: -16px;
+      bottom: -14px;
+      width: 92px;
+      height: 92px;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #fff;
+      border-radius: 18px;
+      background: #202020;
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 30px;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.45);
+    }
+
+    .hero-info {
+      padding-top: 16px;
+    }
+
+    .hero-name {
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 50px;
+      line-height: 1;
+      font-style: italic;
+      font-weight: 900;
+      text-shadow: none;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .hero-name::after {
+      content: "✓";
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      margin-left: 16px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #fff;
+      color: #161616;
+      font-size: 24px;
+      font-style: normal;
+      vertical-align: 8px;
+    }
+
+    .cursor {
+      display: none;
+    }
+
+    .hero-role {
+      color: #fff;
+      margin: 8px 0 18px;
+      font-size: 23px;
+      font-style: italic;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .contacts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border: 3px solid #fff;
+      padding: 18px 20px;
+      gap: 12px 18px;
+    }
+
+    .contact-item {
+      color: #fff;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .contact-icon {
+      width: 34px;
+      height: 34px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .grid-2,
+    .skills-split {
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card,
+    .card-full {
+      background: rgba(22,22,22,0.62);
+      border: 0;
+      border-radius: 0;
+      padding: 26px 0 22px;
+      box-shadow: none;
+    }
+
+    .card:hover,
+    .card-full:hover {
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .section-label {
+      color: #fff;
+      display: inline-flex;
+      min-width: 218px;
+      margin-bottom: 18px;
+      padding: 8px 18px;
+      border: 2px solid #fff;
+      font-family: var(--font-head);
+      font-size: 18px;
+      letter-spacing: 1px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .section-label::before {
+      display: none;
+    }
+
+    .section-label::after {
+      width: 42px;
+      height: 2px;
+      flex: none;
+      margin-left: 16px;
+      background: #fff;
+    }
+
+    .about-text,
+    .exp-desc,
+    .modal-desc {
+      color: #f1f1f1;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .about-text {
+      border-top: 3px solid #fff;
+      padding: 18px 22px 0 0;
+    }
+
+    .about-text strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .software-icons {
+      gap: 12px;
+      padding-top: 4px;
+    }
+
+    .sw-icon,
+    .brand-card {
+      width: 70px;
+      height: 70px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+    }
+
+    .sw-icon > span:first-child {
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .brand-card > span:first-child {
+      font-family: var(--font-head);
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .sw-label,
+    .brand-name {
+      color: #fff;
+      font-size: 8px;
+      letter-spacing: 1px;
+      max-width: 62px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .sw-icon:hover,
+    .brand-card:hover,
+    .project-card:hover {
+      border-color: #fff;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.38);
+      transform: translateY(-4px);
+    }
+
+    .skill-item {
+      margin-bottom: 18px;
+      padding-right: 16px;
+    }
+
+    .skill-header {
+      color: #fff;
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    .skill-pct {
+      color: #fff;
+    }
+
+    .skill-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.16);
+      border-radius: 0;
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.35);
+      position: relative;
+    }
+
+    .skill-fill {
+      background: linear-gradient(90deg, #fff 0%, #d8d8d8 46%, #fff 100%);
+      border-radius: 0;
+      box-shadow: 0 0 16px rgba(255,255,255,0.38);
+      position: relative;
+      overflow: hidden;
+      transform: scaleX(1);
+      transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s;
+    }
+
+    .skill-fill::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        135deg,
+        rgba(0,0,0,0.18) 0 1px,
+        transparent 1px 8px
+      );
+      opacity: 0.35;
+    }
+
+    .skill-fill::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -35%;
+      width: 30%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.72), transparent);
+      animation: skillSweep 2.4s ease-in-out infinite;
+    }
+
+    @keyframes skillSweep {
+      0% { left: -35%; opacity: 0; }
+      18% { opacity: 0.7; }
+      52% { left: 108%; opacity: 0; }
+      100% { left: 108%; opacity: 0; }
+    }
+
+    .exp-item {
+      gap: 16px;
+      padding: 0 18px 24px 0;
+    }
+
+    .exp-dot {
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border: 3px solid #fff;
+      box-shadow: none;
+    }
+
+    .exp-line {
+      width: 3px;
+      background: #fff;
+    }
+
+    .exp-title {
+      color: #fff;
+      font-size: 21px;
+      text-transform: uppercase;
+    }
+
+    .exp-company,
+    .exp-date {
+      color: #dedede;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    .cat-label {
+      color: #fff;
+      margin: 8px 0 12px;
+      font-family: var(--font-head);
+      font-size: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project-card {
+      background: rgba(255,255,255,0.08);
+      border: 2px solid #fff;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .project-thumb {
+      aspect-ratio: 4 / 5;
+      min-height: 190px;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255,255,255,0.28), transparent 26%),
+        linear-gradient(145deg, #383838, #121212);
+      color: #fff;
+      font-size: 48px;
+      filter: grayscale(18%);
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+      background: #111;
+      filter: grayscale(18%) contrast(1.05);
+    }
+
+    .project-thumb::after {
+      display: none;
+    }
+
+    .project-info {
+      background: #181818;
+      border-top: 2px solid #fff;
+    }
+
+    .project-name {
+      color: #fff;
+      font-size: 17px;
+      text-transform: uppercase;
+    }
+
+    .project-tag {
+      color: #dcdcdc;
+      letter-spacing: 1px;
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 92px);
+      gap: 14px;
+    }
+
+    .footer-sig {
+      margin-top: 48px;
+      padding: 28px 0 0;
+      background: transparent;
+      border: 0;
+      border-top: 3px solid #fff;
+      border-radius: 0;
+    }
+
+    .sig-mark,
+    .sig-copy {
+      color: #fff;
+    }
+
+    .sig-dot {
+      background: #fff;
+    }
+
+    .modal-overlay {
+      background: rgba(0,0,0,0.82);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-box {
+      background: #181818;
+      border: 3px solid #fff;
+      border-radius: 0;
+    }
+
+    .modal-header,
+    .modal-body {
+      border-color: #fff;
+      background: #181818;
+    }
+
+    .modal-title,
+    .modal-tag {
+      color: #fff;
+    }
+
+    .modal-close,
+    .scroll-top {
+      background: #fff;
+      border: 2px solid #fff;
+      border-radius: 0;
+      color: #111;
+    }
+
+    .modal-thumb {
+      background: linear-gradient(145deg, #383838, #121212);
+      color: #fff;
+    }
+
+    @media (max-width: 820px) {
+      .wrap {
+        padding: 34px 20px 56px;
+      }
+
+      .navbar {
+        margin-bottom: 36px;
+      }
+
+      .nav-inner,
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        margin-top: 18px;
+        min-height: auto;
+      }
+
+      .nav-links::before {
+        font-size: 22px;
+      }
+
+      .hero,
+      .grid-2,
+      .skills-split {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-frame {
+        width: 230px;
+        height: 230px;
+      }
+
+      .hero-name {
+        font-size: 38px;
+      }
+
+      .hero-role {
+        font-size: 19px;
+      }
+
+      .contacts,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
@@ -1034,18 +1691,13 @@
 
   <!-- ═══ HERO ═══ -->
   <div class="hero corner-deco" id="sobre">
-    <!-- ── FOTO ──
-         ✏️ MODIFIQUE: Substitua o bloco abaixo por:
-         <img src="imagemportifolio.jpeg" alt="Júlia Sales" class="profile-img">
-    -->
      
     <div class="profile-frame">
      <img src="./assets/imagemportifolio.jpeg" alt="Júlia Sales" class="profile-img"> 
         
         
-      </div>
-      <input type="file" id="photoInput" accept="image/*" style="display:none">
     </div>
+    <input type="file" id="photoInput" accept="image/*" style="display:none">
 
     <div class="hero-info">
       <!-- ✏️ MODIFIQUE: Seu nome -->
@@ -1057,11 +1709,11 @@
         <!-- ✏️ MODIFIQUE: Seus contatos -->
         <div class="contact-item">
           <div class="contact-icon">📷</div>
-          <span>@seu_instagram</span>
+          <span>@sales__ju</span>
         </div>
         <div class="contact-item">
           <div class="contact-icon">💼</div>
-          <span>seu.linkedin</span>
+          <span>www.linkedin.com/in/julia-silva-sales</span>
         </div>
         <div class="contact-item">
           <div class="contact-icon">📱</div>
@@ -1083,7 +1735,7 @@
       <p class="about-text">
         Olá, me chamo <strong>Júlia Sales</strong>, sou de <strong>São Paulo, SP</strong>.
         Atuo como <strong>Estudante de Ciência da Computação</strong> desde <strong>2026</strong>,
-        com foco em design digital, identidade visual e UI/UX.
+        com foco em desenvolvimento backend, Blockchain e Cibersegurança.
         Domino diversas ferramentas e estou sempre em busca de novos desafios
         criativos para transformar ideias em projetos visuais impactantes.
       </p>
@@ -1094,13 +1746,12 @@
       <!-- INTERAÇÃO 3: Tooltip ao passar o mouse nos ícones de software -->
       <!-- ✏️ MODIFIQUE: data-tooltip = nome completo do software -->
       <div class="software-icons">
-        <div class="sw-icon" data-tooltip="Photoshop"><span>🎨</span><span class="sw-label">Ps</span></div>
-        <div class="sw-icon" data-tooltip="Illustrator"><span>🖌️</span><span class="sw-label">Ai</span></div>
-        <div class="sw-icon" data-tooltip="Figma"><span>📐</span><span class="sw-label">Figma</span></div>
-        <div class="sw-icon" data-tooltip="After Effects"><span>🎬</span><span class="sw-label">Ae</span></div>
-        <!-- ✏️ Adicione mais ícones:
-        <div class="sw-icon" data-tooltip="VS Code"><span>💻</span><span class="sw-label">VSC</span></div>
-        -->
+        <div class="sw-icon" data-tooltip="JavaScript"><span>{ }</span><span class="sw-label">JS</span></div>
+        <div class="sw-icon" data-tooltip="Python"><span>Py</span><span class="sw-label">Python</span></div>
+        <div class="sw-icon" data-tooltip="Solidity / Blockchain"><span>◇</span><span class="sw-label">Solidity</span></div>
+        <div class="sw-icon" data-tooltip="Node.js"><span>Nd</span><span class="sw-label">Node</span></div>
+        <div class="sw-icon" data-tooltip="GitHub"><span>GH</span><span class="sw-label">GitHub</span></div>
+        <div class="sw-icon" data-tooltip="VS Code"><span>&lt;/&gt;</span><span class="sw-label">VS Code</span></div>
       </div>
     </div>
   </div>
@@ -1113,29 +1764,29 @@
         <!-- ✏️ MODIFIQUE: Nome e porcentagem -->
         <div class="skill-item">
           <div class="skill-header"><span>Blockchain</span><span class="skill-pct">60%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="60" style="width:60%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-header"><span>JavaScript</span><span class="skill-pct">80%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80" style="width:80%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-header"><span>HTML/CSS</span><span class="skill-pct">75%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="75" style="width:75%"></div></div>
         </div>
       </div>
       <div>
         <div class="skill-item">
-          <div class="skill-header"><span>Photoshop</span><span class="skill-pct">65%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+          <div class="skill-header"><span>Solidity</span><span class="skill-pct">65%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="65" style="width:65%"></div></div>
         </div>
         <div class="skill-item">
           <div class="skill-header"><span>Python</span><span class="skill-pct">85%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85" style="width:85%"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-header"><span>UI / UX Design</span><span class="skill-pct">70%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+          <div class="skill-header"><span>Cibersegurança</span><span class="skill-pct">70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="70" style="width:70%"></div></div>
         </div>
       </div>
     </div>
@@ -1159,93 +1810,81 @@
     <div class="exp-item">
       <div class="exp-track"><div class="exp-dot"></div><div class="exp-line"></div></div>
       <div class="exp-content">
-        <div class="exp-title">Designer Freelancer</div>
-        <div class="exp-company">Nome da Empresa 2</div>
-        <div class="exp-date">Abr 2023 — Dez 2023</div>
-        <div class="exp-desc">Desenvolvimento de logos, banners digitais e layouts para e-commerce.</div>
+        <div class="exp-title">PulicaChein</div>
+        <div class="exp-company">Inteli Blockchain 2</div>
+        <div class="exp-date">Mar 2026 — atuando</div>
+        <div class="exp-desc">Desenvolvivento de supply chain para cadeia do setor alimentício.</div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-track"><div class="exp-dot"></div><div class="exp-line"></div></div>
       <div class="exp-content">
-        <div class="exp-title">Estágio em Design</div>
-        <div class="exp-company">Nome da Empresa 3</div>
-        <div class="exp-date">Mai 2022 — Mar 2023</div>
-        <div class="exp-desc">Suporte à equipe criativa com edição de imagens e diagramação de materiais.</div>
+        <div class="exp-title">Atvos</div>
+        <div class="exp-company">Inteli</div>
+        <div class="exp-date">Abr 2026— atuando</div>
+        <div class="exp-desc">Suporte à equipe de desenvolvimento na parte de backend.</div>
       </div>
     </div>
 
     <div class="exp-item">
       <div class="exp-track"><div class="exp-dot"></div><div class="exp-line"></div></div>
       <div class="exp-content">
-        <div class="exp-title">Assistente de Marketing</div>
-        <div class="exp-company">Nome da Empresa 4</div>
-        <div class="exp-date">Out 2021 — Abr 2022</div>
-        <div class="exp-desc">Criação de conteúdo visual para redes sociais e apoio em campanhas digitais.</div>
+        <div class="exp-title">Orgulho Empreendedor e Turing</div>
+        <div class="exp-company">Coletivo Turing</div>
+        <div class="exp-date">Mar 2026 — atuando</div>
+        <div class="exp-desc">Suporte à equipe de desenvolvimento na parte de backend.</div>
       </div>
     </div>
   </div>
-
   <!-- ═══ PROJETOS — INTERAÇÃO 5: Modal ao clicar ═══ -->
   <div class="card-full" id="projetos">
     <div class="section-label">Meus Projetos</div>
 
-    <div class="cat-label">Manipulação &amp; Futurismo</div>
+    <div class="cat-label">Projetos realizados</div>
     <div class="projects-grid" style="margin-bottom:20px">
-
-      <!--
-        ✏️ MODIFIQUE: Atributos do card:
-        data-name    = Nome do projeto
-        data-tag     = Categoria
-        data-desc    = Descrição detalhada (aparece no modal)
-        data-emoji   = Emoji fallback (quando não há imagem)
-
-        Para usar imagem na thumb, substitua o conteúdo de .project-thumb por:
-        <img src="projeto1.jpg" style="width:100%;height:100%;object-fit:cover">
-      -->
       <div class="project-card"
-           data-name="Nome do Projeto 1"
-           data-tag="Manipulação Digital"
-           data-desc="Projeto de manipulação digital com composição de camadas e efeitos de luz futurista. Desenvolvido no Photoshop com texturas customizadas."
-           data-emoji="🎨">
-        <div class="project-thumb">🎨</div>
+           data-name="CieloVerso"
+           data-tag="Gameficação"
+           data-desc="Projeto de gameficação para treinamento corporativo."
+           data-emoji="CV">
+        <div class="project-thumb"><img src="./assets/cieloVerso.png" alt="CieloVerso"></div>
         <div class="project-info">
-          <div class="project-name">Nome do Projeto 1</div>
-          <div class="project-tag">Manipulação Digital</div>
+          <div class="project-name">CieloVerso</div>
+          <div class="project-tag">Gameficação</div>
         </div>
       </div>
 
       <div class="project-card"
-           data-name="Nome do Projeto 2"
-           data-tag="Composição"
-           data-desc="Composição artística explorando elementos cósmicos e futuristas, com foco em profundidade e perspectiva."
-           data-emoji="🌌">
-        <div class="project-thumb">🌌</div>
+           data-name="PublicaChain"
+           data-tag="Blockchain"
+           data-desc="Desenvolvimento de supply chain para rastreabilidade sustentável na blockchain."
+           data-emoji="PC">
+        <div class="project-thumb"><img src="./assets/publicaChain.png" alt="PublicaChain"></div>
         <div class="project-info">
-          <div class="project-name">Nome do Projeto 2</div>
-          <div class="project-tag">Composição</div>
+          <div class="project-name">PublicaChain</div>
+          <div class="project-tag">Blockchain</div>
         </div>
       </div>
 
       <div class="project-card"
-           data-name="Nome do Projeto 3"
-           data-tag="Futurismo"
-           data-desc="Identidade visual futurista com tipografia bold, paleta neon e elementos geométricos dinâmicos."
-           data-emoji="⚡">
-        <div class="project-thumb">⚡</div>
+           data-name="Coletivo Turing"
+           data-tag="Backend"
+           data-desc="Suporte à equipe de desenvolvimento na parte de backend para o Coletivo Turing."
+           data-emoji="CT">
+        <div class="project-thumb"><img src="./assets/coletivoTuring.png" alt="Coletivo Turing"></div>
         <div class="project-info">
-          <div class="project-name">Nome do Projeto 3</div>
-          <div class="project-tag">Futurismo</div>
+          <div class="project-name">Coletivo Turing</div>
+          <div class="project-tag">Backend</div>
         </div>
       </div>
     </div>
 
-    <div class="cat-label">Projetos de Logo</div>
+    <div class="cat-label">Frentes de atuação</div>
     <div class="brand-grid">
-      <div class="brand-card"><span>🔷</span><span class="brand-name">Cliente 1</span></div>
-      <div class="brand-card"><span>🔶</span><span class="brand-name">Cliente 2</span></div>
-      <div class="brand-card"><span>⬡</span><span class="brand-name">Cliente 3</span></div>
+      <div class="brand-card"><span>GAME</span><span class="brand-name">CieloVerso</span></div>
+      <div class="brand-card"><span>WEB3</span><span class="brand-name">Blockchain</span></div>
+      <div class="brand-card"><span>API</span><span class="brand-name">Backend</span></div>
     </div>
   </div>
 
@@ -1297,10 +1936,10 @@
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
   });
 
-  // Esconde cursor nativo
-  document.body.style.cursor = 'none';
+  // Mantem o cursor nativo no tema poster.
+  document.body.style.cursor = 'auto';
   document.querySelectorAll('a,button,input,label,[role="button"]').forEach(el => {
-    el.style.cursor = 'none';
+    el.style.cursor = 'pointer';
   });
 })();
 

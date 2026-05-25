@@ -114,7 +114,7 @@
       font-size: 36px;
       font-weight: 900;
       color: #fff;
-      letter-spacing: -1px;
+      letter-spacing: 0;
       text-shadow: 0 0 24px rgba(0,212,255,0.3);
       margin-bottom: 8px;
     }
@@ -226,7 +226,7 @@
       font-weight: 900;
       font-size: 38px;
       color: #fff;
-      letter-spacing: -1px;
+      letter-spacing: 0;
       text-shadow: 0 0 20px rgba(0,212,255,0.3);
       line-height: 1.1;
     }
@@ -711,6 +711,124 @@
       .anim-grid   { grid-template-columns: 1fr; }
       .guide-title { font-size: 26px; }
     }
+
+    /* Ajuste visual para acompanhar o portfolio em estilo poster escuro. */
+    :root {
+      --bg: #151515;
+      --bg2: rgba(22,22,22,0.86);
+      --bg3: rgba(255,255,255,0.08);
+      --bg4: rgba(255,255,255,0.1);
+      --blue: #ffffff;
+      --blue-bright: #ffffff;
+      --blue-dim: #cfcfcf;
+      --cyan: #ffffff;
+      --cyan-dim: #d6d6d6;
+      --text: #f5f5f5;
+      --text2: #d8d8d8;
+      --border: rgba(255,255,255,0.2);
+      --border2: rgba(255,255,255,0.82);
+      --radius: 0;
+      --glow: 0 14px 30px rgba(0,0,0,0.35);
+      --glow-strong: 0 18px 44px rgba(0,0,0,0.5);
+    }
+
+    body {
+      background:
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.055) 0 1px, transparent 1px 13px),
+        linear-gradient(180deg, #242424 0%, #151515 48%, #2d2d2d 48%, #2d2d2d 64%, #111 64%);
+      color: var(--text);
+      letter-spacing: 0;
+    }
+
+    body::before {
+      background:
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 18px);
+      opacity: 0.75;
+    }
+
+    body::after {
+      display: none;
+    }
+
+    .page {
+      max-width: 1080px;
+    }
+
+    .guide-hero,
+    .card,
+    .interaction-item,
+    .anim-card,
+    .project-mini,
+    .nav-demo,
+    .icon-box,
+    .color-swatch {
+      background: rgba(20,20,20,0.72);
+      border: 2px solid #fff;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .guide-hero {
+      text-align: left;
+      padding: 44px 36px;
+    }
+
+    .guide-badge,
+    .tag-demo {
+      border: 2px solid #fff;
+      border-radius: 0;
+      color: #fff;
+    }
+
+    .guide-title,
+    .type-specimen-head {
+      color: #fff;
+      text-shadow: none;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .section-head,
+    .comp-label,
+    .swatch-name,
+    .proj-tag-d,
+    .anim-name,
+    .int-tech {
+      color: #fff;
+    }
+
+    .section-head::before,
+    .section-head::after,
+    .sec-lbl-d::before,
+    .sec-lbl-d::after,
+    .skill-fill-d,
+    .spacing-bar,
+    .bar-anim-fill,
+    .sig-dot-d,
+    .pulse-anim,
+    .cursor-anim {
+      background: #fff;
+    }
+
+    .btn-nav.active,
+    .skill-fill-d,
+    .bar-anim-fill {
+      background-image: none;
+      box-shadow: none;
+    }
+
+    .btn-nav,
+    .btn-nav.active,
+    .btn-nav:hover,
+    .swatch-hex,
+    .tw-sample,
+    .scale-row,
+    .spacing-value,
+    .proj-name-d,
+    .int-name,
+    .sig-demo {
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -941,7 +1059,7 @@
         <div class="type-scale">
           <div class="scale-row">
             <div class="scale-label">Hero · 34px</div>
-            <div style="font-family:var(--font-head);font-size:34px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;">Júlia Sales</div>
+            <div style="font-family:var(--font-head);font-size:34px;font-weight:900;color:#fff;letter-spacing:0;line-height:1;">Júlia Sales</div>
           </div>
           <div class="scale-row">
             <div class="scale-label">H2 · 18px</div>
@@ -1080,28 +1198,28 @@
       <div class="comp-label" style="margin-bottom:16px;">Ícones de Software (sw-icon) — 52×52px · border-radius 8px</div>
       <div class="icons-grid">
         <div class="icon-item">
-          <div class="icon-box"><span>🎨</span></div>
-          <div class="icon-label">Ps</div>
+          <div class="icon-box"><span>{ }</span></div>
+          <div class="icon-label">JS</div>
         </div>
         <div class="icon-item">
-          <div class="icon-box"><span>🖌️</span></div>
-          <div class="icon-label">Ai</div>
+          <div class="icon-box"><span>Py</span></div>
+          <div class="icon-label">Python</div>
         </div>
         <div class="icon-item">
-          <div class="icon-box"><span>📐</span></div>
-          <div class="icon-label">Figma</div>
+          <div class="icon-box"><span>◇</span></div>
+          <div class="icon-label">Solidity</div>
         </div>
         <div class="icon-item">
-          <div class="icon-box"><span>🎬</span></div>
-          <div class="icon-label">Ae</div>
+          <div class="icon-box"><span>Nd</span></div>
+          <div class="icon-label">Node</div>
         </div>
         <div class="icon-item">
-          <div class="icon-box"><span>💻</span></div>
-          <div class="icon-label">Code</div>
+          <div class="icon-box"><span>GH</span></div>
+          <div class="icon-label">GitHub</div>
         </div>
         <div class="icon-item">
-          <div class="icon-box"><span>📱</span></div>
-          <div class="icon-label">Mobile</div>
+          <div class="icon-box"><span>&lt;/&gt;</span></div>
+          <div class="icon-label">VS Code</div>
         </div>
       </div>
 
@@ -1159,11 +1277,11 @@
       <div class="comp-label">Barra de Habilidade (animada ao scroll)</div>
       <div class="comp-row" style="flex-direction:column;gap:10px;">
         <div class="skill-demo">
-          <div class="skill-header-d"><span>Photoshop</span><span class="skill-pct-d">90%</span></div>
+          <div class="skill-header-d"><span>Blockchain</span><span class="skill-pct-d">90%</span></div>
           <div class="skill-bar-d"><div class="skill-fill-d" style="width:90%"></div></div>
         </div>
         <div class="skill-demo">
-          <div class="skill-header-d"><span>Figma</span><span class="skill-pct-d">75%</span></div>
+          <div class="skill-header-d"><span>Backend</span><span class="skill-pct-d">75%</span></div>
           <div class="skill-bar-d"><div class="skill-fill-d" style="width:75%"></div></div>
         </div>
       </div>
